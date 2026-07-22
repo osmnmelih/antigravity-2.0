@@ -1,0 +1,377 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════════════════════════
+   ANTIGRAVITY 2.0 — Marvel's Guardians of the Galaxy Theme Palette
+   Colors: Cosmic Deep Violet (#0B001A), Space Gold/Yellow (#FFC800),
+   Volt Magenta/Neon Purple (#F50057), Cyber Teal/Cyan (#00FFD2)
+   Design Approach: High impact contrast, larger panels, responsive.
+   ══════════════════════════════════════════════════════════════ */
+:root {
+  --ag-bg:       #0A0314;   /* Cosmic Deep Purple-Black */
+  --ag-surface:  #160C2C;   /* Dark Violet panels */
+  --ag-elevated: #28144E;   /* Elevated panels / bright violet */
+  --ag-border:   rgba(0, 255, 210, 0.2);  /* Teal border */
+  --ag-border-strong: rgba(255, 200, 0, 0.55); /* Space Gold border */
+
+  --ag-cyan:     #00FFD2;   /* Cyber Teal/Cyan Accent */
+  --ag-cyan-dim: #00BFAA;   /* Muted teal */
+  --ag-blue:     #1E88E5;   /* Cosmic blue */
+
+  --ag-green:    #00FF88;   /* Success */
+  --ag-yellow:   #FFC800;   /* Space Gold / Primary Active UI */
+  --ag-red:      #FF0055;   /* Volt Magenta / Threat Warning */
+  --ag-purple:   #8A2BE2;   /* Active Nebula Violet */
+
+  --ag-text:     #F3E8FF;   /* Lavender Cool White */
+  --ag-muted:    #A391BE;   /* Muted Space Purple */
+  --ag-dim:      #351A5A;   /* Muted background frames */
+}
+
+/* ── Base Reset ─────────────────────────────────────────────── */
+html, body, #root {
+  background: radial-gradient(circle at 50% 50%, #160a2d 0%, #080211 70%, #030007 100%);
+  background-attachment: fixed;
+  color: var(--ag-text);
+  font-family: 'Orbitron', 'Share Tech Mono', 'Inter', system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Keep legacy cyber- variables mapped to new palette for compatibility */
+:root {
+  --cyber-bg:     var(--ag-bg);
+  --cyber-darker: var(--ag-bg);
+  --cyber-card:   var(--ag-surface);
+  --cyber-panel:  var(--ag-elevated);
+  --cyber-border: var(--ag-border);
+  --cyber-cyan:   var(--ag-cyan);
+  --cyber-purple: var(--ag-purple);
+  --cyber-green:  var(--ag-green);
+  --cyber-yellow: var(--ag-yellow);
+  --cyber-orange: var(--ag-yellow);
+  --cyber-danger: var(--ag-red);
+  --cyber-pink:   var(--ag-red);
+  --cyber-text:   var(--ag-text);
+  --cyber-muted:  var(--ag-muted);
+  --cyber-dim:    var(--ag-dim);
+}
+
+@layer components {
+  /* ── Panel / Card ── */
+  .ag-panel {
+    background: var(--ag-surface);
+    border: 1px solid var(--ag-border);
+    border-radius: 12px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .ag-panel:hover {
+    border-color: var(--ag-border-strong);
+  }
+
+  /* Legacy alias */
+  .hud-panel {
+    background: var(--ag-surface);
+    border: 1px solid var(--ag-border);
+    border-radius: 12px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .cyber-card {
+    background: var(--ag-surface);
+    border: 1px solid var(--ag-border);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Buttons ── */
+  .ag-btn-primary {
+    background: transparent;
+    border: 2px solid var(--ag-cyan);
+    color: var(--ag-cyan);
+    border-radius: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+  .ag-btn-primary:hover {
+    background: rgba(0, 255, 210, 0.15);
+    box-shadow: 0 0 24px rgba(0, 255, 210, 0.4);
+    transform: translateY(-2px);
+  }
+  .ag-btn-primary:active {
+    transform: scale(0.96);
+  }
+  .ag-btn-primary:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .ag-btn-solid {
+    background: linear-gradient(135deg, var(--ag-yellow) 0%, #E0A000 100%);
+    color: #0A0314;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 200, 0, 0.25);
+  }
+  .ag-btn-solid:hover {
+    box-shadow: 0 0 30px rgba(255, 200, 0, 0.6);
+    transform: translateY(-2px);
+  }
+  .ag-btn-solid:active {
+    transform: scale(0.96);
+  }
+  .ag-btn-solid:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  /* Legacy button aliases */
+  .cyber-btn-cyan      { @apply ag-btn-primary; }
+  .cyber-btn-solid-cyan { @apply ag-btn-solid; }
+  .cyber-btn-pink {
+    background: transparent;
+    border: 2px solid var(--ag-red);
+    color: var(--ag-red);
+    border-radius: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: all 0.25s;
+  }
+  .cyber-btn-pink:hover {
+    background: rgba(255, 0, 85, 0.15);
+    box-shadow: 0 0 24px rgba(255, 0, 85, 0.35);
+  }
+  .cyber-btn-green {
+    background: transparent;
+    border: 2px solid var(--ag-green);
+    color: var(--ag-green);
+    border-radius: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: all 0.25s;
+  }
+  .cyber-btn-green:hover {
+    background: rgba(0, 255, 136, 0.15);
+    box-shadow: 0 0 24px rgba(0, 255, 136, 0.35);
+  }
+
+  /* ── Input ── */
+  .cyber-input {
+    background: var(--ag-bg);
+    border: 1px solid var(--ag-border);
+    color: var(--ag-text);
+    border-radius: 10px;
+    padding: 0 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .cyber-input::placeholder {
+    color: var(--ag-muted);
+  }
+  .cyber-input:focus {
+    outline: none;
+    border-color: var(--ag-cyan);
+    box-shadow: 0 0 0 3px rgba(0, 255, 210, 0.12);
+  }
+
+  /* ── Typography helpers ── */
+  .ag-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ag-muted);
+  }
+  .ag-value {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--ag-cyan);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .font-orbitron   { font-family: 'Orbitron', sans-serif; }
+  .font-mono-cyber { font-family: 'Share Tech Mono', monospace; }
+
+  /* ── Status badges ── */
+  .badge-cyan   { background: rgba(0,255,210,0.1); color: var(--ag-cyan); border: 1px solid rgba(0,255,210,0.3); border-radius: 6px; padding: 2px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .badge-green  { background: rgba(0,255,136,0.1); color: var(--ag-green); border: 1px solid rgba(0,255,136,0.3); border-radius: 6px; padding: 2px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .badge-red    { background: rgba(255,0,85,0.1);  color: var(--ag-red);   border: 1px solid rgba(255,0,85,0.3);  border-radius: 6px; padding: 2px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .badge-yellow { background: rgba(255,200,0,0.1);  color: var(--ag-yellow); border: 1px solid rgba(255,200,0,0.3); border-radius: 6px; padding: 2px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── Neon text ── */
+  .neon-text-cyan   { color: var(--ag-cyan);   text-shadow: 0 0 12px rgba(0,255,210,0.6); }
+  .neon-text-green  { color: var(--ag-green);  text-shadow: 0 0 12px rgba(0,255,136,0.6); }
+  .neon-text-red    { color: var(--ag-red);    text-shadow: 0 0 12px rgba(255,0,85,0.6); }
+  .neon-text-yellow { color: var(--ag-yellow); text-shadow: 0 0 12px rgba(255,200,0,0.6); }
+  /* Legacy */
+  .neon-text-pink   { color: var(--ag-red);    text-shadow: 0 0 12px rgba(255,0,85,0.6); }
+  .neon-text-purple { color: var(--ag-purple); text-shadow: 0 0 8px rgba(138,43,226,0.45); }
+
+  /* ── Corner accent (minimal) ── */
+  .corner-accent { position: relative; }
+  .corner-accent::before,
+  .corner-accent::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: var(--ag-cyan);
+    border-style: solid;
+    opacity: 0.5;
+    z-index: 2;
+  }
+  .corner-accent::before { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; border-radius: 2px 0 0 0; }
+  .corner-accent::after  { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; border-radius: 0 0 2px 0; }
+}
+
+/* ── Minimal background grid ─────────────────────────────────── */
+.cockpit-grid {
+  background:
+    linear-gradient(var(--ag-bg), var(--ag-bg)),
+    repeating-linear-gradient(0deg, rgba(0,255,210,0.018) 0px, rgba(0,255,210,0.018) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(0,255,210,0.018) 0px, rgba(0,255,210,0.018) 1px, transparent 1px, transparent 40px);
+  background-size: cover, 40px 40px, 40px 40px;
+}
+
+/* ── Vignette overlay ────────────────────────────────────────── */
+.cockpit-curve::after {
+  content: '';
+  display: block;
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.45) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Scanlines (very subtle) ────────────────────────────────── */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.06) 3px,
+    rgba(0,0,0,0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Leaflet dark ── */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: #0B001A;
+  font-family: 'Orbitron', sans-serif;
+}
+.leaflet-tile-container img {
+  filter: invert(100%) hue-rotate(180deg) saturate(1.8) contrast(1.15) brightness(0.8);
+}
+.leaflet-control-zoom a {
+  background: var(--ag-surface) !important;
+  color: var(--ag-cyan) !important;
+  border-color: var(--ag-border) !important;
+}
+.leaflet-control-zoom a:hover { background: var(--ag-elevated) !important; }
+.leaflet-control-attribution {
+  background: rgba(22,12,44,0.9) !important;
+  color: var(--ag-muted) !important;
+  font-size: 10px !important;
+}
+.leaflet-control-attribution a { color: rgba(0,255,210,0.4) !important; }
+
+/* ── GPS dot ─────────────────────────────────────────────────── */
+.user-marker-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.user-dot {
+  width: 14px;
+  height: 14px;
+  background: #00FFD2;
+  border: 2px solid #0A0314;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(0,255,210,0.2), 0 0 12px rgba(0,255,210,0.5);
+  animation: neonPulse 2s ease-in-out infinite;
+  display: block;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar            { width: 4px; }
+::-webkit-scrollbar-track      { background: var(--ag-bg); }
+::-webkit-scrollbar-thumb      { background: var(--ag-dim); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover{ background: rgba(0,255,210,0.25); }
+
+/* ── Safe area ───────────────────────────────────────────────── */
+@layer utilities {
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 12px); }
+}
+
+/* ── Status bar ──────────────────────────────────────────────── */
+.status-bar-bg {
+  background: rgba(0,255,210,0.06);
+  border: 1px solid rgba(0,255,210,0.12);
+  height: 5px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.status-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  box-shadow: 0 0 6px currentColor;
+}
+
+/* ── Animations ──────────────────────────────────────────────── */
+@keyframes neonPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(0,255,210,0.4)); }
+  50%       { filter: drop-shadow(0 0 20px rgba(0,255,210,0.7)); }
+}
+
+@keyframes alertPulse {
+  0%, 100% { border-color: rgba(255,0,85,0.35); }
+  50%       { border-color: rgba(255,0,85,0.9); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ag-fade-in { animation: fadeIn 0.3s ease-out; }
+.milano-hud-glow   { animation: pulseGlow 4s ease-in-out infinite; }
+.milano-alert-pulse { animation: alertPulse 1.5s infinite; }
+
+@keyframes cosmicDrift {
+  0% { transform: scale(1.0) translate(0, 0) rotate(0deg); }
+  50% { transform: scale(1.15) translate(-1.5%, 1%) rotate(1.5deg); }
+  100% { transform: scale(1.0) translate(0, 0) rotate(0deg); }
+}
+.animate-cosmic-drift {
+  animation: cosmicDrift 75s ease-in-out infinite;
+}
