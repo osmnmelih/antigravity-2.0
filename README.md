@@ -1,10 +1,14 @@
-# 🌌 Antigravity 2.0 - Immersive Gamified Scavenger Hunt
+<p align="center">
+  <img src="src/assets/logo.png" alt="Antigravity 2.0 Logo" width="450" />
+</p>
+
+# Antigravity 2.0 - Immersive Gamified Scavenger Hunt
 
 **Antigravity 2.0** is an innovative, cyberpunk-themed outdoor scavenger hunt application designed for school PE classes. Grounded in Deci & Ryan's **Self-Determination Theory (SDT)** and heavily inspired by **Marvel's Guardians of the Galaxy**, the application transforms regular physical education challenges into an immersive narrative space mission.
 
 ---
 
-## 📸 Screenshots & Visuals
+## Screenshots & Visuals
 
 ### 1. Teacher Dashboard & Real-Time Map Setup
 The teacher ("Commander") drops sector nodes on the map and monitors live team progress:
