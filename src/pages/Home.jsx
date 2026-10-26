@@ -35,13 +35,13 @@ export default function Home() {
         (err) => {
           console.warn("Location permission error:", err);
           if (err.code === 1) {
-            alert("Lütfen tarayıcınızdan konum izni verin. Konum izni olmadan oyunu oynamak mümkün değildir. / Please allow location permission in browser settings.");
+            alert("Please allow location permission in your browser settings. GPS access is required to participate in the simulation.");
           }
         },
         { enableHighAccuracy: true, timeout: 6000 }
       );
     } else {
-      alert("Tarayıcınız konum servisini desteklemiyor veya HTTPS (güvenli bağlantı) kullanmıyorsunuz. Lütfen adresi https:// ile açtığınızdan emin olun!");
+      alert("Your browser does not support location services or an insecure connection (HTTP) is used. Please open via https://");
     }
     
     setStage('role');

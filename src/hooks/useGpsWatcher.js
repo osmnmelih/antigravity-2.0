@@ -59,7 +59,7 @@ export function useGpsWatcher() {
       console.warn("watchPosition final error:", err);
       setGpsError('GPS unavailable');
       if (err.code === 1) {
-        alert("Konum izni reddedildi! Lütfen telefonunuzun tarayıcı ayarlarından (Safari/Chrome -> Konum Servisleri -> İzin Ver) konum erişimini etkinleştirin.");
+        alert("Location permission denied! Please enable location access in your device/browser settings (Settings -> Location Services -> Allow).");
       }
     };
 
